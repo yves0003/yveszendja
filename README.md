@@ -1,34 +1,46 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# How i build my website
 
-## Getting Started
+## Règles
 
-First, run the development server:
+Pour les codes, toujours mettre 1 tags
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+Pour les articles toujours mettres au moins 2 tags
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+photoUrl uniquement pour voyages et découvertes
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Configurer son espace de travail
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+### 1 - Installer les dépendance
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+      yarn create next-app --typescript
 
-## Learn More
+### 2 - Supprimer les fichiers inutiles
 
-To learn more about Next.js, take a look at the following resources:
+### 3 - Installer sass et mettre à jour next.config
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- installer sass à l'aide de yarn
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+      yarn add sass -D
 
-## Deploy on Vercel
+- Dans next-config ajouter :
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+      sassOptions: {
+        includePaths: [path.join(__dirname, 'styles')],
+      },
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### 4 - Installer style-components
+
+- Installer à l'aide de yarn
+
+      yarn add styles-component
+      yarn add @types/styled-components -D
+
+- mettre à jour le package.json
+
+      "resolutions": {
+        "styled-components": "^5"
+      }
+
+### 5 - Rajouter prettierrc
+
+- copier le fichier dans 1 de mes repertoires de travail : .prettierrc
