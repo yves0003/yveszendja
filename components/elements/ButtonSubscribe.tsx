@@ -14,6 +14,7 @@ const Form = styled.form`
     outline: none;
     padding-left: 1rem;
     border-radius: 4px 0 0 4px;
+    min-width: 100px;
   }
   input[type="submit"] {
     position: relative;

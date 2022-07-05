@@ -24,6 +24,7 @@ const TagDiv = styled.div`
   //gap: 0.5rem;
 `
 const Item = styled.div`
+  position: relative;
   span {
     padding: 0rem 0.6rem;
   }
@@ -32,19 +33,38 @@ const Item = styled.div`
   border: solid 1px var(--surface2);
   border-radius: 0.25rem;
   cursor: pointer;
-  font-size: 0.9rem;
+  span {
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
   transition: background-color var(--speed) cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 
   background-color: ${props =>
-    props.theme.active ? "hsla(var(--brand-hsl) / 0.5)" : "transparent"};
+    props.theme.active ? "hsla(var(--primary-bg-hsl) / 0.8)" : "transparent"};
 
   color: var(--text2);
   &:hover {
-    background-color: hsla(var(--brand-hsl) / 0.5);
+    background-color: hsla(var(--primary-bg-hsl) / 0.5);
     color: var(--text1);
+    border: solid 0px var(--surface2);
   }
   display: grid;
   align-content: center;
+  :after {
+    border-radius: 0.25rem;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: transform 250ms;
+  }
+  :hover::after {
+    background-color: hsla(var(--primary-bg-hsl) / 1);
+    transform: scale(1.05);
+  }
 `
 
 interface ListTags extends HTMLAttributes<HTMLDivElement> {
@@ -68,7 +88,7 @@ const ListTags: FC<ListTags> = ({ allTags, home, directory, ...props }) => {
           key={tag}
           onClick={e => routerDir(router, `${directory}?tag=${slugify(tag)}`)}
         >
-          <Item theme={{ active: isSelectedRoute(slugify(tag), router, "tag") }}>
+          <Item theme={{ active: isSelectedRoute(slugify(tag), router, "tag") || home }}>
             <span>{capitalizeFirstLetter(tag)}</span>
           </Item>
         </ItemContainer>

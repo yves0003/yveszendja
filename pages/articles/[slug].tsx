@@ -4,6 +4,7 @@ import { MDXDoc } from "../../@types"
 import styled from "styled-components"
 import TabMatiere from "../../components/elements/TabMatiere"
 import { getStaticPathsFunc, getStaticPropsFunc } from "../../lib/nextProps"
+import Playground from "../../components/elements/Playground/Playground"
 
 const Div = styled.div`
   min-height: 80vh;
@@ -35,6 +36,18 @@ const TextContainer = styled.div`
 `
 
 const slug = ({ doc }: { doc: MDXDoc }) => {
+  const snippet = {
+    markup: `<div id=app />`,
+    css: ``,
+    javascript: `import { h, Component, render } from 'preact';
+      import htm from 'htm';
+
+      const html = htm.bind(h);
+
+      const app = html\`<div>Hello World from Playground!</div>\`
+
+      render(app, document.getElementById('app'));`,
+  }
   return (
     <Div className="container mt-6">
       <h2 className="mb-3">{doc.meta.title}</h2>
@@ -42,6 +55,14 @@ const slug = ({ doc }: { doc: MDXDoc }) => {
         <TabMatiere />
         <TextContainer>
           <MDXRemote {...doc.source} />
+          <Playground
+            mode="dark"
+            id="exampled"
+            initialSnippet={snippet}
+            defaultEditorTab="javascript"
+            transformJs
+          />
+          {/* <PlaygroundCode /> */}
         </TextContainer>
       </ArticleContainer>
     </Div>

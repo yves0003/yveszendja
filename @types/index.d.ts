@@ -1,3 +1,6 @@
+declare module "@agney/react-inspector"
+import { Dispatch, ForwardedRef, HTMLAttributes, SetStateAction } from "react"
+
 export interface articlesMeta {
   title: string
   photoUrl: string
@@ -19,4 +22,18 @@ export type directory = "codes" | "articles" | "inspirations" | "voyages"
 export interface MDXDoc {
   source: MDXRemoteSerializeResult<Record<string, unknown>>
   meta: articlesMeta
+}
+
+export type ModalVal = {
+  selectedModal: "" | "connect" | "share"
+  actifClickAway: boolean
+  isPopUp: boolean
+  linkToShare: string
+}
+
+export interface Modal extends ModalBoxInt {}
+
+export interface ModalBoxInt extends HTMLAttributes<HTMLDivElement> {
+  refObject?: ForwardedRef<HTMLDivElement>
+  refControler?: ForwardedRef<HTMLDivElement>
 }

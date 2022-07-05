@@ -520,3 +520,23 @@ header {
   transition: background var(--speed) ease-in;
   -webkit-appearance: none;
 }
+
+.playground {
+  margin: 1rem 0.5rem;
+}
+
+//Pour les codes dans le texte
+.hljs {
+  background: var(--surface2) !important;
+  border-radius: 8px;
+}
+
+// playground
+
+// .go697426381 {
+//   width: inherit !important;
+// }
+
+// .go89676631 {
+//   width: inherit !important;
+// }

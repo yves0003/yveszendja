@@ -5,6 +5,7 @@ import { getMouseDirectionX } from "../../helpers/getMouseDirection"
 
 interface LinkA extends AnchorHTMLAttributes<HTMLAnchorElement> {
   active: Boolean
+  compte?: Boolean
 }
 
 const A = styled.a`
@@ -13,15 +14,16 @@ const A = styled.a`
   position: relative;
   background-color: transparent;
   letter-spacing: 0.8px;
+  ${props => (props.theme.compte ? "border: solid 1px var(--surface2);" : null)};
 `
 
-const LinkA: FC<LinkA> = ({ children, href, active, ...props }) => {
+const LinkA: FC<LinkA> = ({ children, href, active, compte, ...props }) => {
   const [mousePos, setMousePos] = useState<number>()
   return (
     <Link passHref href={href!}>
       <A
         {...props}
-        theme={{ active, mousePos }}
+        theme={{ active, mousePos, compte }}
         onMouseEnter={e => {
           setMousePos(getMouseDirectionX(e, e.currentTarget))
         }}

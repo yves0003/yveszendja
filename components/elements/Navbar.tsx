@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { useDarkMode } from "../../hooks/useDarkMode"
 import ButtonLight from "./ButtonLight"
-import { useState } from "react"
+import { Dispatch, FC, SetStateAction, useState } from "react"
 import { useRouter } from "next/router"
 import { isSelectedRoute } from "../../helpers/isSelectedRoute"
 import LinkA from "./LinkA"
@@ -9,6 +9,7 @@ import { animated, config, useTransition } from "react-spring"
 import { useClickAway } from "../../hooks/useClickAway"
 import Link from "next/link"
 import ButtonMobMenu from "./ButtonMobMenu"
+import { useModal } from "../../context/modalAction"
 
 const Header = styled.header`
   height: 4rem;
@@ -74,6 +75,7 @@ const MenuMobNav = styled.ul`
 
 const LinkPage = styled.li`
   font-weight: ${props => (props.theme.active ? "600" : null)};
+  ${props => (props.theme.compte ? "border: solid 1px var(--surface3);" : null)};
 `
 
 const DivButtonLight = styled.div`
@@ -92,11 +94,11 @@ const DivButtonMobMenu = styled.div`
   }
 `
 
-const Navbar = () => {
+const Navbar: FC<{ setOpenModal: Dispatch<SetStateAction<boolean>> }> = ({ setOpenModal }) => {
   const router = useRouter()
   let [statusDark, setStatusDark] = useDarkMode("", "statusDark")
   let { refControler, open, setOpen, refObject } = useClickAway(false)
-
+  const { setModalValues } = useModal()
   const transitions = useTransition(open, {
     from: { top: "-18rem" },
     enter: { top: "4rem" },
@@ -140,6 +142,21 @@ const Navbar = () => {
                 active={isSelectedRoute("/voyages", router)}
               >
                 <span className="m-1">Découvertes</span>
+              </LinkA>
+              <LinkA
+                //href="/compte"
+                href=""
+                rel="noopener noreferrer"
+                active={isSelectedRoute("/compte", router)}
+                onClick={() => {
+                  setOpenModal(true)
+                  setModalValues(prev => {
+                    return { ...prev, isPopUp: true, selectedModal: "connect" }
+                  })
+                }}
+                compte
+              >
+                <span className="m-1 br-2">Se connecter</span>
               </LinkA>
             </Nav>
           </DivMenuDesktop>
@@ -210,12 +227,23 @@ const Navbar = () => {
                     </Link>
                     <Link passHref href="/voyages">
                       <LinkPage
-                        className="pt-2 pb-2 navLink br-4 mb-2"
+                        className="pt-2 pb-2 navLink br-4"
                         onClick={() => setOpen(false)}
                         theme={{ active: isSelectedRoute("/voyages", router) }}
                       >
                         <a className="m-3" rel="noopener noreferrer">
                           <span>Découvertes</span>
+                        </a>
+                      </LinkPage>
+                    </Link>
+                    <Link passHref href="/compte">
+                      <LinkPage
+                        className="pt-2 pb-2 navLink br-4 ml-2 mr-2 mb-2"
+                        onClick={() => setOpen(false)}
+                        theme={{ active: isSelectedRoute("/compte", router), compte: true }}
+                      >
+                        <a className="m-3" rel="noopener noreferrer">
+                          <span>Se connecter</span>
                         </a>
                       </LinkPage>
                     </Link>

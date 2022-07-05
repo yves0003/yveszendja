@@ -2,10 +2,12 @@ import type { NextPage } from "next"
 import Image from "next/image"
 import styled from "styled-components"
 import { metaArticles } from "../@types"
+import Comments from "../components/elements/Comments/Comments"
 import ListArticles from "../components/elements/ListArticles"
 import ListTags from "../components/elements/ListTags"
 import Subscribe from "../components/sections/subscribe"
 import { getAllArticlesByDirectory } from "../lib/mdx"
+import useSWR from "swr"
 
 const ImageStyled = styled(Image)`
   border-radius: 50%;
@@ -78,6 +80,10 @@ const TagContainer = styled.div`
 const Div = styled.div`
   min-height: 80vh;
 `
+
+const H4 = styled.h4`
+  color: var(--primary-fg);
+`
 const Home: NextPage<{ docs: metaArticles[] }> = ({ docs }) => {
   const docHomePage = docs.slice(0, 4)
   const allTags = docs
@@ -112,7 +118,7 @@ const Home: NextPage<{ docs: metaArticles[] }> = ({ docs }) => {
       </DivIntro>
       <DivPubTags>
         <ListArticlesContainer>
-          <h4 className="pb-3">Dernières publications</h4>
+          <H4 className="pb-3">Dernières publications</H4>
           <ListArticles docs={docHomePage} directory="articles" />
         </ListArticlesContainer>
         <TagContainer>
@@ -121,6 +127,7 @@ const Home: NextPage<{ docs: metaArticles[] }> = ({ docs }) => {
         </TagContainer>
       </DivPubTags>
       <Subscribe />
+      <Comments articleId="article001" ecart="10px" />
     </Div>
   )
 }

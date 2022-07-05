@@ -1,0 +1,12 @@
+
+API Key
+BQw0ecK3VjblXR8K5OhXXlURk
+
+API Key Secret
+O6y1VKTgpFqfAN0nwoEtVeAq6JTmSKWxxjOumgI742BCSDrL1h
+
+Bearer Token
+AAAAAAAAAAAAAAAAAAAAANj7eQEAAAAAXdB%2B5pHZl0uA9PxvAXSXAMwk1%2FY%3DRCtiNSoNcaSshvtfplIJpg5Djc37GBPQ4aeISxWASK9iAniHSO
+
+To complete set up, add this callback URL to your Twitter app configuration
+https://yveszendja.firebaseapp.com/__/auth/handler
