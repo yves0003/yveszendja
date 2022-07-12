@@ -4,6 +4,9 @@ import { MDXDoc } from "../../@types"
 import styled from "styled-components"
 import TabMatiere from "../../components/elements/TabMatiere"
 import { getStaticPathsFunc, getStaticPropsFunc } from "../../lib/nextProps"
+import { slugify } from "../../helpers/slugify"
+import Comments from "../../components/elements/Comments/Comments"
+import { useAuth } from "../../context/auth"
 
 const Div = styled.div`
   min-height: 80vh;
@@ -36,15 +39,17 @@ const TextContainer = styled.div`
 `
 
 const slug = ({ doc }: { doc: MDXDoc }) => {
+  const { user } = useAuth()
   return (
     <Div className="container mt-6">
-      <h2>{doc.meta.title}</h2>
-      <ArticleContainer>
+      <h1>{doc.meta.title}</h1>
+      <ArticleContainer className="articleView">
         <TabMatiere />
         <TextContainer>
           <MDXRemote {...doc.source} />
         </TextContainer>
       </ArticleContainer>
+      <Comments articleSlug={slugify(doc.meta.title)} ecart="10px" user={user} />
     </Div>
   )
 }

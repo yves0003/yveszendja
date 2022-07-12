@@ -373,10 +373,6 @@ h6 {
   @include function.fluid-font($font-size + 1px, $font-size + 6px);
 }
 
-textarea {
-  @include function.fluid-font($font-size + 20px, $font-size + 32px);
-}
-
 img {
 }
 input {
@@ -393,6 +389,10 @@ nav > ul {
   display: flex;
 }
 p {
+  @include function.fluid-font($font-size, $font-size + 4px);
+}
+
+textarea {
   @include function.fluid-font($font-size, $font-size + 4px);
 }
 span {

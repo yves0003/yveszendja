@@ -15,13 +15,17 @@ interface IAuth {
   loginGoogle: () => void
   loginTwitter: () => void
   logout: () => void
+  loading: boolean
 }
 
 const auth = getAuth(firebaseApp)
 
 const loginGoogle = async () => {
   try {
-    await signInWithPopup(auth, new GoogleAuthProvider())
+    const { user } = await signInWithPopup(auth, new GoogleAuthProvider())
+    const { refreshToken, providerData } = user
+    localStorage.setItem("user", JSON.stringify(providerData))
+    localStorage.setItem("accessToken", JSON.stringify(refreshToken))
   } catch (error) {
     console.log(error)
   }
@@ -29,7 +33,10 @@ const loginGoogle = async () => {
 
 const loginTwitter = async () => {
   try {
-    await signInWithPopup(auth, new TwitterAuthProvider())
+    const { user } = await signInWithPopup(auth, new TwitterAuthProvider())
+    const { refreshToken, providerData } = user
+    localStorage.setItem("user", JSON.stringify(providerData))
+    localStorage.setItem("accessToken", JSON.stringify(refreshToken))
   } catch (error) {
     console.log(error)
   }
@@ -51,18 +58,21 @@ export const useAuth = () => {
 
 export const AuthContextProvider: FC = ({ children }) => {
   const [user, setUser] = useState<User | undefined>()
+  const [loading, setLoading] = useState(true)
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, user => {
       if (user) {
         setUser(user)
+        setLoading(false)
       } else {
         setUser(undefined)
+        setLoading(false)
       }
     })
     return () => unsubscribe()
   }, [])
   return (
-    <AuthContext.Provider value={{ user, loginGoogle, loginTwitter, logout }}>
+    <AuthContext.Provider value={{ user, loading, loginGoogle, loginTwitter, logout }}>
       {children}
     </AuthContext.Provider>
   )

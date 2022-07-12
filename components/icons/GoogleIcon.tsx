@@ -1,7 +1,7 @@
 import { FC, HTMLAttributes } from "react"
 import styled from "styled-components"
 
-interface Google extends HTMLAttributes<SVGElement> {
+interface GoogleIcon extends HTMLAttributes<SVGElement> {
   height?: string
   width?: string
 }
@@ -10,7 +10,7 @@ const Svg = styled.svg`
   cursor: pointer;
 `
 
-const Google: FC<Google> = ({ height, width, ...props }) => {
+const GoogleIcon: FC<GoogleIcon> = ({ height, width, ...props }) => {
   return (
     <>
       <Svg
@@ -43,9 +43,9 @@ const Google: FC<Google> = ({ height, width, ...props }) => {
   )
 }
 
-Google.defaultProps = {
-  height: "1.5rem",
-  width: "1.5rem",
+GoogleIcon.defaultProps = {
+  height: "1rem",
+  width: "1rem",
 }
 
-export default Google
+export default GoogleIcon

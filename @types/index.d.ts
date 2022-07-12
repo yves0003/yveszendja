@@ -31,7 +31,9 @@ export type ModalVal = {
   linkToShare: string
 }
 
-export interface Modal extends ModalBoxInt {}
+export interface Modal extends ModalBoxInt {
+  setOpen: Dispatch<SetStateAction<boolean>>
+}
 
 export interface ModalBoxInt extends HTMLAttributes<HTMLDivElement> {
   refObject?: ForwardedRef<HTMLDivElement>

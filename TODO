@@ -1,3 +1,4 @@
+[x] vois si besoin d'optimiser le chargement des messages avec lazyloading (https://www.youtube.com/watch?v=sjAeLwuezxo&t=1171s&ab_channel=MonsterlessonsAcademy)
+[ ] Rajouter le cache pour mettre à jour les données (utiliser le devTool : <ReactQueryDevtools initialIsOpen={false} />)
 [ ] Améliorer le séparateur dans le playground
 [ ] créer un sitemap et rss
-[ ] vois si besoin d'optimiser le chargement des messages avec lazyloading (https://www.youtube.com/watch?v=sjAeLwuezxo&t=1171s&ab_channel=MonsterlessonsAcademy)

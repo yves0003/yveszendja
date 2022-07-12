@@ -4,9 +4,9 @@ import { FC } from "react"
 import styled from "styled-components"
 import { directory, metaArticles } from "../../@types"
 import { capitalizeFirstLetter } from "../../helpers/capitalizeFirstLetter"
+import { transformDate } from "../../helpers/dateFunction"
 import { routerDir } from "../../helpers/routerDir"
 import { slugify } from "../../helpers/slugify"
-import transformDate from "../../helpers/transformDateLong"
 
 const ArticleInfoContainer = styled.div`
   display: flex;

@@ -5,6 +5,10 @@ import styled from "styled-components"
 import TabMatiere from "../../components/elements/TabMatiere"
 import { getStaticPathsFunc, getStaticPropsFunc } from "../../lib/nextProps"
 import Playground from "../../components/elements/Playground/Playground"
+import Comments from "../../components/elements/Comments/Comments"
+import { useAuth } from "../../context/auth"
+import { slugify } from "../../helpers/slugify"
+import { capitalizeFirstLetter } from "../../helpers/capitalizeFirstLetter"
 
 const Div = styled.div`
   min-height: 80vh;
@@ -36,6 +40,7 @@ const TextContainer = styled.div`
 `
 
 const slug = ({ doc }: { doc: MDXDoc }) => {
+  const { user } = useAuth()
   const snippet = {
     markup: `<div id=app />`,
     css: ``,
@@ -48,10 +53,11 @@ const slug = ({ doc }: { doc: MDXDoc }) => {
 
       render(app, document.getElementById('app'));`,
   }
+
   return (
     <Div className="container mt-6">
-      <h2 className="mb-3">{doc.meta.title}</h2>
-      <ArticleContainer>
+      <h1 className="mb-3">{capitalizeFirstLetter(doc.meta.title)}</h1>
+      <ArticleContainer className="articleView">
         <TabMatiere />
         <TextContainer>
           <MDXRemote {...doc.source} />
@@ -65,9 +71,11 @@ const slug = ({ doc }: { doc: MDXDoc }) => {
           {/* <PlaygroundCode /> */}
         </TextContainer>
       </ArticleContainer>
+      <Comments articleSlug={slugify(doc.meta.title)} ecart="10px" user={user} />
     </Div>
   )
 }
+
 export default slug
 export const getStaticProps = getStaticPropsFunc("articles")
 export const getStaticPaths = getStaticPathsFunc("articles")

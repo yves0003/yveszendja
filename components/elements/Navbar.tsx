@@ -4,12 +4,14 @@ import ButtonLight from "./ButtonLight"
 import { Dispatch, FC, SetStateAction, useState } from "react"
 import { useRouter } from "next/router"
 import { isSelectedRoute } from "../../helpers/isSelectedRoute"
-import LinkA from "./LinkA"
+import LinkA, { DivNav } from "./LinkA"
 import { animated, config, useTransition } from "react-spring"
 import { useClickAway } from "../../hooks/useClickAway"
 import Link from "next/link"
 import ButtonMobMenu from "./ButtonMobMenu"
 import { useModal } from "../../context/modalAction"
+import { useAuth } from "../../context/auth"
+import ButtonMonCompte from "./ButtonCompte"
 
 const Header = styled.header`
   height: 4rem;
@@ -35,12 +37,13 @@ const Nav = styled.nav`
   display: flex;
   flex-grow: 1;
   height: 100%;
-  a {
+  a,
+  div {
+    cursor: pointer;
     display: grid;
     align-items: center;
     ${props => (props.theme.active ? "color: var(--primary-bg)" : "")};
     ${props => (props.theme.active ? "font-weight: 500" : "")};
-    //transition: background-color var(--speed) ease-in-out;
     border-radius: 0.5rem;
     :hover {
       background-color: hsla(var(--brand-hsl) / 0.2);
@@ -94,7 +97,12 @@ const DivButtonMobMenu = styled.div`
   }
 `
 
+const Span = styled.span`
+  white-space: nowrap;
+`
+
 const Navbar: FC<{ setOpenModal: Dispatch<SetStateAction<boolean>> }> = ({ setOpenModal }) => {
+  const { user } = useAuth()
   const router = useRouter()
   let [statusDark, setStatusDark] = useDarkMode("", "statusDark")
   let { refControler, open, setOpen, refObject } = useClickAway(false)
@@ -143,21 +151,26 @@ const Navbar: FC<{ setOpenModal: Dispatch<SetStateAction<boolean>> }> = ({ setOp
               >
                 <span className="m-1">Découvertes</span>
               </LinkA>
-              <LinkA
-                //href="/compte"
-                href=""
-                rel="noopener noreferrer"
-                active={isSelectedRoute("/compte", router)}
-                onClick={() => {
-                  setOpenModal(true)
-                  setModalValues(prev => {
-                    return { ...prev, isPopUp: true, selectedModal: "connect" }
-                  })
-                }}
-                compte
-              >
-                <span className="m-1 br-2">Se connecter</span>
-              </LinkA>
+              {!user && (
+                <DivNav
+                  active={isSelectedRoute("/compte", router)}
+                  id="navConnect"
+                  onClick={() => {
+                    setOpenModal(true)
+                    setModalValues(prev => {
+                      return { ...prev, isPopUp: true, selectedModal: "connect" }
+                    })
+                  }}
+                  compte
+                >
+                  <Span className="m-1 br-2">Se connecter</Span>
+                </DivNav>
+              )}
+              {user && (
+                <ButtonMonCompte active={isSelectedRoute("/account", router)}>
+                  <Span style={{}}>Mon compte</Span>
+                </ButtonMonCompte>
+              )}
             </Nav>
           </DivMenuDesktop>
           <DivButtonLight>
@@ -236,17 +249,24 @@ const Navbar: FC<{ setOpenModal: Dispatch<SetStateAction<boolean>> }> = ({ setOp
                         </a>
                       </LinkPage>
                     </Link>
-                    <Link passHref href="/compte">
-                      <LinkPage
-                        className="pt-2 pb-2 navLink br-4 ml-2 mr-2 mb-2"
-                        onClick={() => setOpen(false)}
-                        theme={{ active: isSelectedRoute("/compte", router), compte: true }}
-                      >
-                        <a className="m-3" rel="noopener noreferrer">
-                          <span>Se connecter</span>
-                        </a>
-                      </LinkPage>
-                    </Link>
+                    {!user && (
+                      <Link passHref href="/compte">
+                        <LinkPage
+                          className="pt-2 pb-2 navLink br-4 ml-2 mr-2 mb-2"
+                          onClick={() => setOpen(false)}
+                          theme={{ active: isSelectedRoute("/compte", router), compte: true }}
+                        >
+                          <a className="m-3" rel="noopener noreferrer">
+                            <span>Se connecter</span>
+                          </a>
+                        </LinkPage>
+                      </Link>
+                    )}
+                    {user && (
+                      <ButtonMonCompte active={isSelectedRoute("/account", router)}>
+                        <Span style={{}}>Mon compte</Span>
+                      </ButtonMonCompte>
+                    )}
                   </MenuMobNav>
                 </MenuMob>
               </MenuMobWrapper>

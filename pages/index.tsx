@@ -6,8 +6,8 @@ import Comments from "../components/elements/Comments/Comments"
 import ListArticles from "../components/elements/ListArticles"
 import ListTags from "../components/elements/ListTags"
 import Subscribe from "../components/sections/subscribe"
+import { useAuth } from "../context/auth"
 import { getAllArticlesByDirectory } from "../lib/mdx"
-import useSWR from "swr"
 
 const ImageStyled = styled(Image)`
   border-radius: 50%;
@@ -85,6 +85,7 @@ const H4 = styled.h4`
   color: var(--primary-fg);
 `
 const Home: NextPage<{ docs: metaArticles[] }> = ({ docs }) => {
+  const { user } = useAuth()
   const docHomePage = docs.slice(0, 4)
   const allTags = docs
     .map(doc => doc.meta.tags)
@@ -127,7 +128,6 @@ const Home: NextPage<{ docs: metaArticles[] }> = ({ docs }) => {
         </TagContainer>
       </DivPubTags>
       <Subscribe />
-      <Comments articleId="article001" ecart="10px" />
     </Div>
   )
 }

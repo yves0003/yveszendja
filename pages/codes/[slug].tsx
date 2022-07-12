@@ -12,7 +12,7 @@ const Div = styled.div`
 const slug = ({ doc }: { doc: MDXDoc }) => {
   return (
     <Div className="container mt-6">
-      <h2>{doc.meta.title}</h2>
+      <h1>{doc.meta.title}</h1>
       <MDXRemote {...doc.source} />
     </Div>
   )

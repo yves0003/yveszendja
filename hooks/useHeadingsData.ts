@@ -14,7 +14,9 @@ const useHeadingsData = () => {
     }[]
   >([])
   useEffect(() => {
-    const headingElements = Array.from(document.querySelectorAll("h2, h3"))
+    const headingElements = Array.from(
+      document.querySelectorAll(".articleView h2, .articleView h3")
+    )
     const newNestedHeadings = getNestedHeadings(headingElements)
     setNestedHeadings(newNestedHeadings)
   }, [])
