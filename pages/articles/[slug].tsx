@@ -28,6 +28,11 @@ const ArticleContainer = styled.div`
     padding: 1rem 0;
   }
 
+  h2,
+  h3 {
+    scroll-margin-top: 60px;
+  }
+
   @media (min-width: 36rem) {
     display: grid;
     grid-template-columns: 3fr 1fr;

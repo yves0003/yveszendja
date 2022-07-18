@@ -1,0 +1,45 @@
+---
+title: Comment j'ai crée mon site internet?
+seoTitle: Comment j'ai crée mon site internet?
+extrait: Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt unde consectetur asperiores. Molestiae, laborum maxime?
+isPublished: false
+datePublication: 2022-06-30T19:55:14.000-05:00
+tags: ["AWS", "Serveur", "Cloud"]
+langue: fr
+---
+
+Mon site internet est pensé pour être mon aide mémoire, mon terrain d'expérimentation pour apprendre de nouvelles technologies, tester de nouveaux outils sans devoir me justifier et pousser mes limites dans la compréhension du fonctionnement du web et des outils digitaux. C'est aussi un espace pour échanger avec les personnes qui s'intéresse à mon travail. Ce site est le résultat de plusieurs itérations au fil des années et la version que vous voyez aujourd'hui est la troisième.
+
+Je l'ai developpé comme une mini-saas application avec plusieurs composantes intéressantes comme la gestion des comptes, des emails, des commentaires, l'utilisation de l'intégration et déploiement en continue, la gestion des caches etc...
+
+Pendant que c'est encore tout récent dans ma tête, je voulais documenter cette version de mon site afin de présenter comment il fonctionne, quels outils, logiciels, et technologie il utilise pour me permettre d'avoir un site qui répondent à mes attentes.
+
+## Objectifs
+
+les versions précédentes de mon site internet étaient surtout des vitrines pour afficher mes compétences. Pour cette nouvelle version, je voulais avoir la possibilité d'être plus présent et alimenter régulièrement mon blog. Pour y parvenir mon site devait respecter plusieurs paramètres:
+
+### Réduction de la friction pour rédiger les articles
+
+Je n'ai jamais actualisé les anciennes versions de mon site internet. L'une des raison principale était la difficulté de mettre à jour le site internet qui étaient hébergé sur un serveur. Rediger des articles, les mettre à jour ou les supprimer étaient assez pénibles.
+
+En construisant ce nouveau site, j'ai défini une architecture me permettant de faire de l'intégration et du déploiement continue à l'aide de Github et d'utiliser des fichier Markdown pour rédiger le contenu des blogs. Aujourd'hui, rajouter un articles revient à créer un fichier MD, remplir les informations nécessaires et faire un "pull & push request" et Voilà, le nouveau contenu est présent et publié sur internet.
+
+Cette nouvelle approche me permet de me focaliser uniquement sur la création du contenu.
+
+### Combinaison d'outils pratiques
+
+il existe de nombreux outils que j'ai voulu tester comme twilio / nexmo, next js, AWS, cloudflare etc... En trouvant le moyen de combiner tous ces outils, j'ai pu me créer un système d'alerte de messagerie, un site internet accessible rapidement et une application avec plusieurs API pour rendre l'expérience utilisateur ludique.
+
+### Rapidité
+
+Je voulais un site rapide pour permettre à mes lecteurs de trouver facilement l'information dont ils ont besoin et reduire les frictions qu'ils peuvent rencontrer sur d'autres site internet et/ou blog. Un site internet qui n'est pas rapide, n'est pas agréable à visiter. Pour y arriver, j'ai géré la mise en cache des images et des requêtes.
+
+### Interactif
+
+Je veux que mes lecteurs puissent me donner leur avis sans que je n'ai besoin de passer par un service tiers et les obliger de fournir leur informations pour commenter mes articles. C'est la raison pour laquelle j'ai developpé un système de commentaires accessible uniquement pour les personnes qui sont connectés à mon site. Bien sure, les personnes ont la possibilité de supprimer leur compte à tout moment. En faisant celà, je m'assure que mes lecteurs n'aient pas leur adresse email diffusé et surtout je leur donne la possibilité de me dire ce qu'ils pensent directement, voire de m'aider à m'améliorer s'ils le veulent.
+
+## Mon Stack
+
+### Next.js
+
+Next.js est mon framework front-end de préference. J'apprécie particulièrement son utilisation à cause se son système de gestion des routes à l'aide de système d'organisation des fichiers. C'est un système très intuitif et facile à prendre en main qui permet de bien construire ses routes. Next.js possède également une grande communauté qui a permet de hisser la plateforme à son niveau actuel. Quand je suis bloqué je me réfère à [Next.js discussions](https://github.com/vercel/next.js/discussions) sur github. Presque tout le temps, il y'a déjà une personne qui a réussi à trouver le moyen de resoudre un problème complexe.

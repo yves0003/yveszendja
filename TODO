@@ -2,3 +2,5 @@
 [ ] Rajouter le cache pour mettre à jour les données (utiliser le devTool : <ReactQueryDevtools initialIsOpen={false} />)
 [ ] Améliorer le séparateur dans le playground
 [ ] créer un sitemap et rss
+[ ] Ajouter Prism pour pouvoir utliser Liquid file (https://www.youtube.com/watch?v=xw1SmTBIwtA&ab_channel=BenjaminCarlson)
+[ ] Rajouter un breadcrum pour les liens dans chaque articles, codes instpirations ou découvertes
