@@ -1,9 +1,9 @@
 ---
 title: Comment j'ai crée mon site internet?
 seoTitle: Comment j'ai crée mon site internet?
-extrait: Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt unde consectetur asperiores. Molestiae, laborum maxime?
+extrait: Mon site internet est pensé pour être mon aide mémoire, mon terrain d'expérimentation pour apprendre de nouvelles technologies, tester de nouveaux outils sans devoir me justifier et pousser mes limites dans la compréhension du fonctionnement du web et des outils digitaux.
 isPublished: false
-datePublication: 2022-06-30T19:55:14.000-05:00
+datePublication: 2022-07-22T19:55:14.000-05:00
 tags: ["AWS", "Serveur", "Cloud"]
 langue: fr
 ---
@@ -42,8 +42,16 @@ Je veux que mes lecteurs puissent me donner leur avis sans que je n'ai besoin de
 
 ### Next.js
 
-Next.js est mon framework front-end React de préference. J'apprécie particulièrement son utilisation à cause se son système de gestion des routes à l'aide de système d'organisation des fichiers. C'est un système très intuitif et facile à prendre en main qui permet de bien construire ses routes. Next.js possède également une grande communauté qui a permet de hisser la plateforme à son niveau actuel. Quand je suis bloqué je me réfère à [Next.js discussions](https://github.com/vercel/next.js/discussions) sur github. Presque tout le temps, il y'a déjà une personne qui a réussi à trouver le moyen de resoudre un problème complexe.
+[Next.js](https://nextjs.org/docs/getting-started) est mon framework front-end React de préference. J'apprécie particulièrement son utilisation à cause se son système de gestion des routes à l'aide de système d'organisation des fichiers. C'est un système très intuitif et facile à prendre en main qui permet de bien construire ses routes. Next.js possède également une grande communauté qui a permet de hisser la plateforme à son niveau actuel. Quand je suis bloqué je me réfère à [Next.js discussions](https://github.com/vercel/next.js/discussions) sur github. Presque tout le temps, il y'a déjà une personne qui a réussi à trouver le moyen de resoudre un problème complexe.
 
 ### Styled Component
 
-Styled component est mon outil Css par défaut lorsque. Il me permet de créer des composants très modulables et d'envoyer des code super léger et sans css superflue.
+[Styled component](https://styled-components.com/docs/basics#getting-started) est mon outil Css par défaut lorsque. Il me permet de créer des composants très modulables. Et parce que j'écris toutes mes styles, je peux ainsi maîtriser le le CSS que j'envoie. Il s'agit d'un framework CSS-in-JS qui utilise des templates litérals. Grâce à cet outil, je peux créer des composants react sans avoir besoin d'ouvrir mon fichier css. le style fait désormais parti du composant. De plus, il accepte des propriétés et un tas d'autres astuces qui lui donnent des super pouvoirs.
+
+### AWS (Amazon Web Services)
+
+Oh la la. Tellement puissant cette [plateforme](https://aws.amazon.com/). Il ne cesse de développer des outils et ils possèdent une bonne documentation qui est malheuresement en anglais pour la plupart. C'est mon espace de deploiement des api que j'utilise sur mon site. le système de commentaires des articles par exemple est connecté à une lambda fonction qui permet d'écrire, de mettre à jour et supprimer les informations dans la base de données.
+
+### Mongo DB
+
+J'utilise la base de données pour enregistrer l'id des utilisateurs et les commentaires. Je préfère dans ce sens utiliser une base de données documentaires par ce qu'il n'y a pas de relation complexe entre mes données et que le schema de mes données peut très facilement varier en fonction des différentes besoins.
