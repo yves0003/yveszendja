@@ -44,3 +44,15 @@ photoUrl uniquement pour voyages et découvertes
 ### 5 - Rajouter prettierrc
 
 - copier le fichier dans 1 de mes repertoires de travail : .prettierrc
+
+### 6- Mettre à jour yarn
+
+Lien pour la [migration](https://yarnpkg.com/getting-started/migration)
+
+lien pour les fichier yarn à inclure dans [.gitignore](https://yarnpkg.com/getting-started/qa#which-files-should-be-gitignored)
+
+mettre à jour toutes les dépendances dans packages.json
+[lien source](https://stackoverflow.com/questions/62650640/yarn-how-do-i-update-each-dependency-in-package-json-to-the-latest-version)
+Résumé:
+installer le plugin : yarn plugin import interactive-tools
+exécuter: yarn upgrade-interactive

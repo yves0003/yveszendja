@@ -12,6 +12,7 @@ import { getAllArticlesByDirectory } from "../lib/mdx"
 const ImageStyled = styled(Image)`
   border-radius: 50%;
   background-color: var(--surface2);
+  aspect-ratio: attr(width) / attr(height);
 `
 
 const ImageContainerDiv = styled.div`
@@ -98,7 +99,7 @@ const Home: NextPage<{ docs: metaArticles[] }> = ({ docs }) => {
           <ImageContainer>
             <ImageStyled
               alt="profile"
-              src="https://res.cloudinary.com/lokalistic/image/upload/v1650481419/yveszendja/xpywaomeq7rwdu0gp1fr_i9tvxv.png"
+              src="https://res.cloudinary.com/lokalistic/image/upload/h_150,w_150/v1650481419/yveszendja/xpywaomeq7rwdu0gp1fr_i9tvxv.png"
               width={150}
               height={150}
             />

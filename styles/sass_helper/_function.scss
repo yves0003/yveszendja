@@ -36,7 +36,8 @@
     font-family: $font;
     font-stretch: 25% 150%;
     font-weight: 100 900;
-    src: url($url) format("truetype"),
+    src: url($url) format("truetype");
+    font-display: swap;
   }
 }
 
@@ -49,11 +50,8 @@
       font-display: swap;
       @if $listWeight == 400 {
         src: url($url + "/" + $name + "-" + "regular" + ".eot"); /* IE9 Compat Modes */
-        src: url($url + "/" + $name + "-" + "regular" + ".eot?#iefix")
-            format("embedded-opentype"),
-          /* IE6-IE8 */
-            url($url + "/" + $name + "-" + "regular" + ".woff2")
-            format("woff2"),
+        src: url($url + "/" + $name + "-" + "regular" + ".eot?#iefix") format("embedded-opentype"),
+          /* IE6-IE8 */ url($url + "/" + $name + "-" + "regular" + ".woff2") format("woff2"),
           /* Super Modern Browsers */
             url($url + "/" + $name + "-" + "regular" + ".woff")
             format("woff"),
@@ -65,11 +63,8 @@
             format("svg"); /* Legacy iOS */
       } @else {
         src: url($url + "/" + $name + "-" + $listWeight + ".eot"); /* IE9 Compat Modes */
-        src: url($url + "/" + $name + "-" + $listWeight + ".eot?#iefix")
-            format("embedded-opentype"),
-          /* IE6-IE8 */
-            url($url + "/" + $name + "-" + $listWeight + ".woff2")
-            format("woff2"),
+        src: url($url + "/" + $name + "-" + $listWeight + ".eot?#iefix") format("embedded-opentype"),
+          /* IE6-IE8 */ url($url + "/" + $name + "-" + $listWeight + ".woff2") format("woff2"),
           /* Super Modern Browsers */
             url($url + "/" + $name + "-" + $listWeight + ".woff")
             format("woff"),
@@ -84,13 +79,7 @@
   }
 }
 
-@mixin fluid-font(
-  $min,
-  $max,
-  $min-vw: 576px,
-  $max-vw: 1600px,
-  $fallback: false
-) {
+@mixin fluid-font($min, $max, $min-vw: 576px, $max-vw: 1600px, $fallback: false) {
   $min-no-unit: strip-units($min);
   $max-no-unit: strip-units($max);
   $min-vw-no-unit: strip-units($min-vw);

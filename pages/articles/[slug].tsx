@@ -9,6 +9,7 @@ import Comments from "../../components/elements/Comments/Comments"
 import { useAuth } from "../../context/auth"
 import { slugify } from "../../helpers/slugify"
 import { capitalizeFirstLetter } from "../../helpers/capitalizeFirstLetter"
+import components from "../../components/markdown/components"
 
 const Div = styled.div`
   min-height: 80vh;
@@ -25,7 +26,7 @@ const ArticleContainer = styled.div`
 
   h1,
   h2 {
-    padding: 1rem 0;
+    //padding: 1rem 0;
   }
 
   h2,
@@ -44,6 +45,10 @@ const TextContainer = styled.div`
   grid-area: content;
 `
 
+const H1 = styled.h1`
+  margin-bottom: 3rem;
+  color: var(--primary-fg);
+`
 const slug = ({ doc }: { doc: MDXDoc }) => {
   const { user } = useAuth()
   const snippet = {
@@ -61,19 +66,19 @@ const slug = ({ doc }: { doc: MDXDoc }) => {
 
   return (
     <Div className="container mt-6">
-      <h1 className="mb-3">{capitalizeFirstLetter(doc.meta.title)}</h1>
+      <H1>{capitalizeFirstLetter(doc.meta.title)}</H1>
       <ArticleContainer className="articleView">
         <TabMatiere />
         <TextContainer>
-          <MDXRemote {...doc.source} />
-          <Playground
+          <MDXRemote {...doc.source} components={components} />
+          {/*<Playground
             mode="dark"
             id="exampled"
             initialSnippet={snippet}
             defaultEditorTab="javascript"
             transformJs
           />
-          {/* <PlaygroundCode /> */}
+           <PlaygroundCode /> */}
         </TextContainer>
       </ArticleContainer>
       <Comments articleSlug={slugify(doc.meta.title)} ecart="10px" user={user} />

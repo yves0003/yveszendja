@@ -7,7 +7,7 @@ import { articlesMeta, directory, metaArticles } from "../@types"
 import { slugify } from "../helpers/slugify"
 
 const getDirectory = (directory: directory) => {
-  return path.join(process.cwd(), `/${directory}`)
+  return path.join(process.cwd(), `/${directory}`).replace(/\\/g, "/")
 }
 
 export const getAllArticlesByDirectory = (directory: directory) => {

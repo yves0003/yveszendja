@@ -35,7 +35,7 @@ const Headings = ({
   }[]
   activeId: any
 }) => (
-  <ul style={{ display: "block" }}>
+  <ul style={{ display: "block" }} className="pb-2">
     {headings.map(heading => (
       <li key={heading.id} className={`${heading.id === activeId ? "active" : ""} pt-1`}>
         <HeadingH2 href={`#${heading.id}`}>
@@ -46,7 +46,7 @@ const Headings = ({
             {heading.items.map(child => (
               <li key={child.id} className={child.id === activeId ? "active" : ""}>
                 <a href={`#${child.id}`}>
-                  <p>{child.title}</p>
+                  <p className="pb-1">{child.title}</p>
                 </a>
               </li>
             ))}
